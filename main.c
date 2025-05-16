@@ -16,9 +16,6 @@ void phaseTwo();
 void phaseThree();
 
 
-
-
-
 void title()
 {
     printf("\t\t\t\t\t\t\t\t _____     _                      ___    _   _          ____                \n");                                                              
@@ -33,7 +30,7 @@ void title()
 void tutorial()
 {
     system("cls");
-    char tecla;
+   
     int i, j;
     int a = 15;
     int l = 15;
@@ -49,19 +46,18 @@ void tutorial()
         }
     }
 
-    while(1){
+    
         for (i = 0; i < a; i++){
             for(j = 0; j < l; j++){
             
                 printf("%c ", mapa[i][j]);
-                tecla = getch();
-               // system("cls");
+                
+                
             }
             printf("\n");
         }
     }
     
-}
 
 void credits()
 {
