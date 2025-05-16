@@ -7,6 +7,7 @@
 
 int main();
 void title();
+void iniciar();
 void tutorial();
 void controls();
 void credits();
@@ -14,6 +15,10 @@ void exit();
 void phaseOne();
 void phaseTwo();
 void phaseThree();
+
+int choice;
+int voltar;
+int i,j;
 
 
 void title()
@@ -27,44 +32,54 @@ void title()
     printf("\n");                                                                                                                                                                      
 }
 
-void tutorial()
+void iniciar()
 {
     system("cls");
+    choice = 0; 
+    title();
+    printf("\t\t\t\t\t\t\t\t\t\t\t\t[1] tutorial\n");
+    printf("\n");
+    printf("\t\t\t\t\t\t\t\t\t\t\t\t[2] 1 fase\n");
+    printf("\n");
+    printf("\t\t\t\t\t\t\t\t\t\t\t\t[3] voltar\n");
+    printf("\n");
+    printf("\t\t\t\t\t\t\t\t\t\t\t\tescolha:");
+    scanf("%d", &choice);
+    switch (choice)
+    {
+    case 1:
+        tutorial();
+        break;
+    case 2:
+        phaseOne();
+        break;
+    case 3:
+        main();
+        break;
+    default:
+        printf("\t\t\t\t\t\t\t\t\t\tescolha invalida, pode escolher de novo em 3 segundos");
+        Sleep(3000);
+        iniciar();
+        break;
+    }
+}
+
+void tutorial()
+{
+     system("cls");
+}
    
-    int i, j;
-    int a = 15;
-    int l = 15;
-    char mapa[a][l];
+void phaseOne()
+{
 
-    for (i = 0; i < a; i++){
-        for(j = 0; j < l; j++){
-            if (i == 0 || j == 0 || i == a-1 || j == l-1){
-                mapa[i][j] = '*';
-            } else {
-                mapa[i][j] = ' ';
-            }
-        }
-    }
-
-    
-        for (i = 0; i < a; i++){
-            for(j = 0; j < l; j++){
-            
-                printf("%c ", mapa[i][j]);
-                
-                
-            }
-            printf("\n");
-        }
-    }
-    
+}
 
 void credits()
 {
     system("cls");
     title();
     setlocale(LC_ALL, "pt_BR.UTF-8");
-    int voltar;
+    
     voltar = 0;
     printf("\t\t\t\t\t\t\t\t\t\t\t\tEchoes of the Deep\n");
     printf("\n");
@@ -74,6 +89,7 @@ void credits()
     printf("\n");
     printf("clique 4 para voltar\n");
     printf("\n");
+    printf("\t\t\t\t\t\t\t\t\t\t\t\tescolha:");
     scanf("%d", &voltar);
     if(voltar == 4)
     {
@@ -88,7 +104,7 @@ void controls()
 {
     system("cls");
     title();
-    int voltar;
+    
     voltar = 0;
     printf("frente: w\n");
     printf("esquerda: a\n");
@@ -98,6 +114,7 @@ void controls()
     printf("\n");
     printf("clique 4 para voltar\n");
     printf("\n");
+    printf("\t\t\t\t\t\t\t\t\t\t\t\tescolha:");
     scanf("%d", &voltar);
     if(voltar == 4)
     {
@@ -115,7 +132,7 @@ int main()
     setlocale(LC_ALL, "pt_BR.UTF-8");
     srand(time(NULL));
     title();
-    int choice;
+    choice = 0;
     
     printf("\t\t\t\t\t\t\t\t\t\t\t\t[1] iniciar\n");
     printf("\n");
@@ -131,7 +148,7 @@ int main()
     switch (choice)
     {
     case 1:
-        tutorial();
+        iniciar();
         break;
     case 2:
         controls();
