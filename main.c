@@ -64,15 +64,148 @@ void iniciar()
     }
 }
 
-void tutorial()
-{
-     system("cls");
-}
-   
 void phaseOne()
 {
+    system("cls");
+    title();
 
+    
 }
+
+void tutorial()
+{
+     
+    system("cls");
+    char tecla;
+    int a = 11;
+    int l = 11;
+    int y = 8;
+    int x = 1;
+    int NPCY = 5;
+    int NPCX = 5;
+    int PY = 9;
+    int PX = 9;
+    int CY = 1;
+    int CX = 1;
+    char mapa[a][l];
+    int sair = 0;
+
+     for (i = 0; i < a; i++){
+        for(j = 0; j < l; j++){
+            if (i == 0 || j == 0 || i == a-1 || j == l-1 || (i == 9 && j ==5) || (i == 8 && j == 5) || (i == 7 && j == 5) || (i == 6 && j == 5)){
+                mapa[i][j] = '*';
+            } else {
+                mapa[i][j] = ' ';
+            }
+        }
+    }
+
+    mapa[y][x] = '&';
+    mapa[NPCY][NPCX] = 'P';
+    mapa[PY][PX] = 'D';
+    mapa [CY][CX] = '@';
+
+    while (sair !=1)
+    {
+        title();
+        for (i = 0; i < a; i++){
+            for(j = 0; j < l; j++){
+                printf("%c ", mapa[i][j]);
+            }
+            printf("\n");
+        }
+
+        tecla = getch();
+
+        mapa[y][x] = ' ';
+        mapa[NPCY][NPCX] = ' ';
+        if (tecla == 'w'){  
+            if (mapa[y-1][x] != '*'){
+                y--;
+            }
+        }
+
+        if (tecla == 'a'){
+            if (mapa[y][x-1] != '*'){
+                x--;
+            }
+        }
+
+        if (tecla == 's'){
+            if (mapa[y+1][x] != '*'){
+                y++;
+            }
+        }
+
+        if (tecla == 'd'){
+            if (mapa[y][x+1] != '*'){
+                x++;
+            }
+        }
+        printf("[%d] [%d]", y, x);
+    
+       
+
+        if(CY == y && CX == x){
+            printf("aperte i para interagir\n");
+            
+            tecla = getch();  // Espera o jogador ler
+
+            if(tecla == 'i'){
+            mapa[PY][PX] = '=';
+            mapa [CY][CX] = ' ';
+            system("cls");
+            printf("A porta abriu\n");
+            printf("\nPressione qualquer tecla para continuar...");
+            getch();  // Espera o jogador ler
+            }
+        }        
+        if(mapa[9][9] == '='){
+            if(y == 9 && x == 9){
+                printf("aperte i para interagir\n");
+            
+                tecla = getch();  // Espera o jogador ler
+
+                if(tecla == 'i'){
+            system("cls");
+            printf("Voce esta entrando na caverna, UUUUUUUUUUUUUUUU\n");
+            printf("prepare-se para primeira fase");
+            getch();  // Espera o jogador ler
+        
+            sair = 1;
+                }
+            }
+        }
+        if (NPCY == y && NPCX == x) {
+        printf("Aperte 'i' para interagir\n");
+        
+        tecla = getch();  // Espera nova tecla
+
+        if (tecla == 'i') {
+        system("cls");
+        printf("Ola, meu nome e Artur-Cabeca-Oca.\n");
+        printf("Ali e a entrada da caverna. Dizem que la tem monstros,\n");
+        printf("mas tambem ha um tesouro antigo. Du du du du du...\n");
+        printf("AH, voce ainda nao foi embora, tem que pegar aquela chave ali (@)\n");
+        printf("Quando voce pegar a chave a porta abre (=)\n");
+        printf("e quando voce ver um (O), interaja tambem, ele derruba paredes\n");
+        printf("\nPressione qualquer tecla para continuar...");
+        getch();  // Espera o jogador ler
+        }
+                                    }   
+        
+
+        mapa[y][x] = '&';
+        mapa[NPCY][NPCX] = 'P';
+        mapa [CY][CX] = '@';
+        
+        system("cls");
+        
+    }
+    phaseOne();
+}
+   
+
 
 void credits()
 {
