@@ -67,8 +67,129 @@ void iniciar()
 void phaseOne()
 {
     system("cls");
-    title();
+    char tecla;
+    int a = 11;
+    int l = 11;
+    int y = 8;
+    int x = 1;
+    int NPCY = 1;
+    int NPCX = 8;
+    int PY = 9;
+    int PX = 9;
+    int CY = 1;
+    int CX = 9;
+    char mapa[a][l];
+    for (i = 0; i < a; i++){
+        for(j = 0; j < l; j++){
+            if (i == 0 || j == 0 || i == a-1 || j == l-1 || (i == 9 && j ==5) || (i == 8 && j == 5) || (i == 7 && j == 5) || (i == 6 && j == 5) || (i == 5 && j == 5) || (i == 4 && j ==5) || (i == 3 && j == 5) || (i == 2 && j == 5)){
+                mapa[i][j] = '*';
+            } else {
+                mapa[i][j] = ' ';
+            }
+        }
+    }
+    
+    mapa[y][x] = '&';
+    mapa[NPCY][NPCX] = 'P';
+    mapa[PY][PX] = 'D';
+    mapa [CY][CX] = '@';
 
+    while(1){
+        title();
+        for (i = 0; i < a; i++){
+            for(j = 0; j < l; j++){
+                printf("%c ", mapa[i][j]);
+            }
+            printf("\n");
+        }
+
+        tecla = getch();
+
+        mapa[y][x] = ' ';
+        mapa[NPCY][NPCX] = ' ';
+        if (tecla == 'w'){  
+            if (mapa[y-1][x] != '*'){
+                y--;
+            }
+        }
+
+        if (tecla == 'a'){
+            if (mapa[y][x-1] != '*'){
+                x--;
+            }
+        }
+
+        if (tecla == 's'){
+            if (mapa[y+1][x] != '*'){
+                y++;
+            }
+        }
+
+        if (tecla == 'd'){
+            if (mapa[y][x+1] != '*'){
+                x++;
+            }
+        }
+       
+        if(CY == y && CX == x){
+            printf("aperte i para interagir\n");
+            
+            tecla = getch();  // Espera o jogador ler
+
+            if(tecla == 'i'){
+            mapa[PY][PX] = '=';
+            mapa [CY][CX] = ' ';
+            system("cls");
+            printf("Artur-Cabeca-Oca: O que voce esta fazendo com a minha chave preferida, nao, VOLTA AQUI\n");
+            printf("A porta abriu\n");
+            printf("\nPressione qualquer tecla para continuar...");
+            getch();  // Espera o jogador ler
+            }
+        }        
+        if(mapa[9][9] == '='){
+            if(y == 9 && x == 9){
+                printf("aperte i para interagir\n");
+            
+                tecla = getch();  // Espera o jogador ler
+
+                if(tecla == 'i'){
+            system("cls");
+            printf("fase 2 esta por vir...\n");
+            printf("voce vai conhcer alguem (X)");
+            getch();  // Espera o jogador ler
+        
+            break;
+                }
+            }
+        }
+
+        if (NPCY == y && NPCX == x) {
+        printf("Aperte 'i' para interagir\n");
+        
+        tecla = getch();  // Espera nova tecla
+
+        if (tecla == 'i') {
+        system("cls");
+        printf("Artur-Cabeca-Oca:\n");
+        printf("eu ja nao falei pra ti tudo que tinha pra falar, sai daqui.\n");
+        printf("eu estou com a minha chave preferida. Du du du du du...\n");
+        printf("\nPressione qualquer tecla para continuar...");
+        getch();  // Espera o jogador ler
+        }
+                                    }   
+
+
+        mapa[y][x] = '&';
+        mapa[NPCY][NPCX] = 'P';
+        mapa [CY][CX] = '@';
+        system("cls");
+    }
+
+    
+    phaseTwo();
+}
+
+void phaseTwo(){
     
 }
 
@@ -88,7 +209,6 @@ void tutorial()
     int CY = 1;
     int CX = 1;
     char mapa[a][l];
-    int sair = 0;
 
      for (i = 0; i < a; i++){
         for(j = 0; j < l; j++){
@@ -105,7 +225,7 @@ void tutorial()
     mapa[PY][PX] = 'D';
     mapa [CY][CX] = '@';
 
-    while (sair !=1)
+    while (1)
     {
         title();
         for (i = 0; i < a; i++){
@@ -142,7 +262,7 @@ void tutorial()
                 x++;
             }
         }
-        printf("[%d] [%d]", y, x);
+        
     
        
 
@@ -172,7 +292,7 @@ void tutorial()
             printf("prepare-se para primeira fase");
             getch();  // Espera o jogador ler
         
-            sair = 1;
+            break;
                 }
             }
         }
