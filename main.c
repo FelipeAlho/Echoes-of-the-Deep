@@ -272,7 +272,7 @@ void phaseTwo(){
 
             if(tecla == 'i'){
             mapa[PY][PX] = '=';
-            mapa [CY][CX] = ' ';
+            
             system("cls");
             printf("A porta abriu\n");
             printf("\nPressione qualquer tecla para continuar...");
@@ -310,7 +310,7 @@ void phaseTwo(){
             printf("clique qualquer botao para continuar\n");
             tecla = getch();  // Espera o jogador ler
 
-            iniciar();
+            phaseTwo();
         }
 
         if(mapa[19][19] == '='){
@@ -348,7 +348,7 @@ void phaseTwo(){
         }
                                     }   
 
-        if(mapa[9][1] == ' '){
+        /*if(mapa[9][1] == ' '){
             inimigoY = 1 + rand() % (8);
             inimigoX = 1 + rand() % (8);
             if(mapa[inimigoY][inimigoX] != '*'){
@@ -361,9 +361,9 @@ void phaseTwo(){
             printf("clique qualquer botao para continuar\n");
             tecla = getch();  // Espera o jogador ler
 
-            iniciar();
+            phaseTwo();
             }  
-        }
+        }*/
 
         mapa[y][x] = '&';
         mapa[NPCY][NPCX] = 'P';
@@ -380,7 +380,265 @@ void phaseTwo(){
 }
 
 void phaseThree(){
-    
+    system("cls");
+    char tecla;
+    int a = 41;
+    int l = 41;
+    int y = 39;
+    int x = 1;
+    int NPCY = 30;
+    int NPCX = 1;
+    int PY = 1;
+    int PX = 39;
+    int CY = 19;
+    int CX = 1;
+    int BBY = 21;
+    int BBX = 19;
+    int BY = 1;
+    int BX = 1;
+    int inimigoY = 39;
+    int inimigoX = 39;
+    int TTY = 21;
+    int TTX = 39;
+    int TY = 19;
+    int TX = 19;
+
+    char mapa[a][l];
+    for (i = 0; i < a; i++){
+        for(j = 0; j < l; j++){
+            if (i == 0 || j == 0 || i == a-1 || j == l-1 || (i && j == 20) || (i == 20 &&  j)){
+                mapa[i][j] = '*';
+            }else if((i == 1 && j == 30) || (i == 2 && j == 30) || (i == 3 && j == 30) || (i == 4 && j == 30) || (i == 5 && j == 30) || (i == 6 && j == 30) || (i == 7 && j == 30) || (i == 8 && j == 30) || (i == 9 && j == 30) || (i == 11 && j == 30) || (i == 12 && j == 30) || (i == 13 && j == 30) || (i == 14 && j == 30) || (i == 15 && j == 30) || (i == 16 && j == 30) || (i == 17 && j == 30) || (i == 18 && j == 30) || (i == 19 && j == 30) || (i == 18 && j == 18) || (i == 16 && j == 16) || (i == 17 && j == 17) || (i == 17 && j == 16) || (i == 18 && j == 16) || (i == 16 && j == 19)){
+                mapa[i][j] = '#';
+            } else {
+                mapa[i][j] = ' ';
+            }
+        }
+    }
+
+    mapa[y][x] = '&';
+    mapa[NPCY][NPCX] = 'P';
+    mapa[PY][PX] = 'D';
+    mapa [CY][CX] = '@';
+    mapa [BBY][BBX] = 'O';
+    mapa [BY][BX] = 'O';
+    mapa [TTY][TTX] = '>';
+    mapa [TY][TX] = '>';
+
+    while(1){
+         title();
+        for (i = 0; i < a; i++){
+            for(j = 0; j < l; j++){
+                printf("%c ", mapa[i][j]);
+            }
+            printf("\n");
+        }
+
+        tecla = getch();
+        printf("[%d][%d]", y, x);
+        mapa[y][x] = ' ';
+        mapa[NPCY][NPCX] = ' ';
+        mapa[inimigoY][inimigoX] = ' ';
+
+        if (tecla == 'w'){  
+            if (mapa[y-1][x] != '*' && mapa[y-1][x] != 'D'){
+                y--;
+            }
+        }
+
+        if (tecla == 'a'){
+            if (mapa[y][x-1] != '*' && mapa[y][x-1] != 'D'){
+                x--;
+            }
+        }
+
+        if (tecla == 's'){
+            if (mapa[y+1][x] != '*' &&  mapa[y+1][x] !='D'){
+                y++;
+            }
+        }
+
+        if (tecla == 'd'){
+            if (mapa[y][x+1] != '*' && mapa[y][x+1] != 'D'){
+                x++;
+            }
+        }
+
+        if(CY == y && CX == x){
+            printf("aperte i para interagir\n");
+            
+            tecla = getch();  // Espera o jogador ler
+
+            if(tecla == 'i'){
+            mapa[PY][PX] = '=';
+            system("cls");
+            printf("A porta abriu\n");
+            printf("\nPressione qualquer tecla para continuar...");
+            getch();  // Espera o jogador ler
+            }
+        }
+
+        if(BBY == y && BBX == x){
+            printf("aperte i para interagir\n");
+            
+            tecla = getch();  // Espera o jogador ler
+            
+            if(tecla == 'i'){
+            mapa[21][20] = ' ';
+            mapa[22][20] = ' ';
+            mapa[23][20] = ' ';
+            mapa[24][20] = ' ';
+            mapa[25][20] = ' ';
+            mapa[26][20] = ' ';
+            mapa[27][20] = ' ';
+            mapa[28][20] = ' ';
+            mapa[29][20] = ' ';
+            mapa[30][20] = ' ';
+            mapa[31][20] = ' ';
+            mapa[32][20] = ' ';
+            mapa[33][20] = ' ';
+            mapa[34][20] = ' ';
+            mapa[35][20] = ' ';
+            mapa[36][20] = ' ';
+            mapa[37][20] = ' ';
+            mapa[38][20] = ' ';
+            mapa[39][20] = ' ';
+            system("cls");
+            printf("A parede caiu.\n");
+            printf("tem um monstro la....\n");
+            printf("\nPressione qualquer tecla para continuar...");
+            getch();  // Espera o jogador ler
+            }
+        }
+
+         if(BY == y && BX == x){
+            printf("aperte i para interagir\n");
+            
+            tecla = getch();  // Espera o jogador ler
+            
+            if(tecla == 'i'){
+            mapa[1][20] = ' ';
+            mapa[2][20] = ' ';
+            mapa[3][20] = ' ';
+            mapa[4][20] = ' ';
+            mapa[5][20] = ' ';
+            mapa[6][20] = ' ';
+            mapa[7][20] = ' ';
+            mapa[8][20] = ' ';
+            mapa[9][20] = ' ';
+            mapa[10][20] = ' ';
+            mapa[11][20] = ' ';
+            mapa[12][20] = ' ';
+            mapa[13][20] = ' ';
+            mapa[14][20] = ' ';
+            mapa[15][20] = ' ';
+            mapa[16][20] = ' ';
+            mapa[17][20] = ' ';
+            mapa[18][20] = ' ';
+            mapa[19][20] = ' ';
+            system("cls");
+            printf("A parede caiu.\n");
+            printf("tem um monstro la....\n");
+            printf("\nPressione qualquer tecla para continuar...");
+            getch();  // Espera o jogador ler
+            }
+        }
+
+        if((y == 1 && x == 30) || (y == 2 && x == 30) || (y == 3 && x == 30) || (y == 4 && x == 30) || (y == 5 && x == 30) || (y == 6 && x == 30) || (y == 7 && x == 30) || (y == 8 && x == 30) || (y == 9 && x == 30) || (y == 11 && x == 30) || (y == 12 && x == 30) || (y == 13 && x == 30) || (y == 14 && x == 30) || (y == 15 && x == 30) || (y == 16 && x == 30) || (y == 17 && x == 30) || (y == 18 && x == 30) || (y == 19 && x == 30) || (y == 18 && x == 18) || (y == 16 && x == 16) || (y == 17 && x == 17) || (y == 17 && x == 16) || (y == 18 && x == 16) || (y == 16 && x == 19)){
+            system("cls");
+            printf("Voce nao sabe andar, volte pra o incio e aprenda\n");
+            printf("clique qualquer botao para continuar\n");
+            tecla = getch();  // Espera o jogador ler
+
+            phaseThree();
+        }
+
+        if(mapa[1][39] == '='){
+            if(y == 1 && x == 39){
+                printf("aperte i para interagir\n");
+            
+                tecla = getch();  // Espera o jogador ler
+
+                if(tecla == 'i'){
+            system("cls");
+            printf("Parabens, voce conseguiu encontrar o tesouro.\n");
+            printf("aqui esta o seu 10 em algoritimos e codificacoes de sistemas");
+            printf("\nmas tem mais uma fase se voce quiser...");
+            getch();  // Espera o jogador ler
+        
+            break;
+                }
+            }
+        }
+
+        if (NPCY == y && NPCX == x) {
+        printf("Aperte 'i' para interagir\n");
+        
+        tecla = getch();  // Espera nova tecla
+
+        if (tecla == 'i') {
+        system("cls");
+        printf("Artur-Cabeca-Oca:\n");
+        printf("estou impressionado que voce chegou ate aqui\n");
+        printf("meu amigo monstro da ultima fase nao conseguiu lhe parar.\n");
+        printf("dessa vez tem ele e o seu irmao mais velho\n");
+        printf("boa sorte, Du du du du du...\n");
+        printf("\nPressione qualquer tecla para continuar...");
+        getch();  // Espera o jogador ler
+        }
+                                    }   
+
+        /*if(mapa[9][1] == ' '){
+            inimigoY = 21 + rand() % (39 - 21 + 1);
+            inimigoX = 21 + rand() % (39 - 21 + 1);
+            if(mapa[inimigoY][inimigoX] != '*'){
+
+            }
+        
+            if(inimigoY == y && inimigoX == x){
+            system("cls");
+            printf("O monstro te comeu cara, melhore\n");
+            printf("clique qualquer botao para continuar\n");
+            tecla = getch();  // Espera o jogador ler
+
+            phaseTwo();
+            }  
+        }*/
+
+        if(TTY == y && TTX == x){
+            printf("aperte i para interagir\n");
+            
+            tecla = getch();  // Espera o jogador ler
+            if(tecla == 'i'){
+                y = 19;
+                x = 19;
+            }
+        }
+
+        if(TTY == y && TTX == x){
+            printf("aperte i para interagir\n");
+            
+            tecla = getch();  // Espera o jogador ler
+            if(tecla == 'i'){
+                y = TTY;
+                x = TTX;
+            }
+        }
+
+        mapa[y][x] = '&';
+        mapa[NPCY][NPCX] = 'P';
+        mapa [CY][CX] = '@';
+        mapa [BY][BX] = 'O';
+        mapa [BBY][BBX] = 'O';
+        mapa[inimigoY][inimigoX] = 'X';
+        mapa [TTY][TTX] = '>';
+        mapa [TY][TX] = '>';
+        system("cls");
+
+
+
+    }
+    phaseThree();
 }
 
 void tutorial()
