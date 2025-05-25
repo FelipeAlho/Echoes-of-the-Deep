@@ -348,7 +348,7 @@ void phaseTwo(){
         }
                                     }   
 
-        /*if(mapa[9][1] == ' '){
+        if(mapa[9][1] == ' '){
             inimigoY = 1 + rand() % (8);
             inimigoX = 1 + rand() % (8);
             if(mapa[inimigoY][inimigoX] != '*'){
@@ -363,7 +363,7 @@ void phaseTwo(){
 
             phaseTwo();
             }  
-        }*/
+        }
 
         mapa[y][x] = '&';
         mapa[NPCY][NPCX] = 'P';
@@ -402,13 +402,14 @@ void phaseThree(){
     int TTX = 39;
     int TY = 19;
     int TX = 19;
-
+    int monstroY = 1;
+    int monstroX = 19;
     char mapa[a][l];
     for (i = 0; i < a; i++){
         for(j = 0; j < l; j++){
             if (i == 0 || j == 0 || i == a-1 || j == l-1 || (i && j == 20) || (i == 20 &&  j)){
                 mapa[i][j] = '*';
-            }else if((i == 1 && j == 30) || (i == 2 && j == 30) || (i == 3 && j == 30) || (i == 4 && j == 30) || (i == 5 && j == 30) || (i == 6 && j == 30) || (i == 7 && j == 30) || (i == 8 && j == 30) || (i == 9 && j == 30) || (i == 11 && j == 30) || (i == 12 && j == 30) || (i == 13 && j == 30) || (i == 14 && j == 30) || (i == 15 && j == 30) || (i == 16 && j == 30) || (i == 17 && j == 30) || (i == 18 && j == 30) || (i == 19 && j == 30) || (i == 18 && j == 18) || (i == 16 && j == 16) || (i == 17 && j == 17) || (i == 17 && j == 16) || (i == 18 && j == 16) || (i == 16 && j == 19)){
+            }else if((i == 1 && j == 30) || (i == 2 && j == 30) || (i == 3 && j == 30) || (i == 4 && j == 30) || (i == 5 && j == 30) || (i == 6 && j == 30) || (i == 7 && j == 30) || (i == 8 && j == 30) || (i == 9 && j == 30) || (i == 11 && j == 30) || (i == 12 && j == 30) || (i == 13 && j == 30) || (i == 14 && j == 30) || (i == 15 && j == 30) || (i == 16 && j == 30) || (i == 17 && j == 30) || (i == 18 && j == 30) || (i == 19 && j == 30) || (i == 18 && j == 18) || (i == 16 && j == 16) || (i == 17 && j == 17) || (i == 17 && j == 16) || (i == 18 && j == 16) || (i == 16 && j == 19) || (i == 22 && j == 19) || (i == 22 && j == 18) || (i == 22 && j == 17) || (i == 19 && j == 18)){
                 mapa[i][j] = '#';
             } else {
                 mapa[i][j] = ' ';
@@ -424,6 +425,7 @@ void phaseThree(){
     mapa [BY][BX] = 'O';
     mapa [TTY][TTX] = '>';
     mapa [TY][TX] = '>';
+    mapa [monstroY][monstroX] = 'V';
 
     while(1){
          title();
@@ -439,6 +441,7 @@ void phaseThree(){
         mapa[y][x] = ' ';
         mapa[NPCY][NPCX] = ' ';
         mapa[inimigoY][inimigoX] = ' ';
+        mapa[monstroY][monstroX] = ' ';
 
         if (tecla == 'w'){  
             if (mapa[y-1][x] != '*' && mapa[y-1][x] != 'D'){
@@ -544,7 +547,7 @@ void phaseThree(){
             }
         }
 
-        if((y == 1 && x == 30) || (y == 2 && x == 30) || (y == 3 && x == 30) || (y == 4 && x == 30) || (y == 5 && x == 30) || (y == 6 && x == 30) || (y == 7 && x == 30) || (y == 8 && x == 30) || (y == 9 && x == 30) || (y == 11 && x == 30) || (y == 12 && x == 30) || (y == 13 && x == 30) || (y == 14 && x == 30) || (y == 15 && x == 30) || (y == 16 && x == 30) || (y == 17 && x == 30) || (y == 18 && x == 30) || (y == 19 && x == 30) || (y == 18 && x == 18) || (y == 16 && x == 16) || (y == 17 && x == 17) || (y == 17 && x == 16) || (y == 18 && x == 16) || (y == 16 && x == 19)){
+        if((y == 1 && x == 30) || (y == 2 && x == 30) || (y == 3 && x == 30) || (y == 4 && x == 30) || (y == 5 && x == 30) || (y == 6 && x == 30) || (y == 7 && x == 30) || (y == 8 && x == 30) || (y == 9 && x == 30) || (y == 11 && x == 30) || (y == 12 && x == 30) || (y == 13 && x == 30) || (y == 14 && x == 30) || (y == 15 && x == 30) || (y == 16 && x == 30) || (y == 17 && x == 30) || (y == 18 && x == 30) || (y == 19 && x == 30) || (y == 18 && x == 18) || (y == 16 && x == 16) || (y == 17 && x == 17) || (y == 17 && x == 16) || (y == 18 && x == 16) || (y == 16 && x == 19)  || (y == 22 && x == 19) || (y == 22 && x == 18) || (y == 22 && x == 17) || (y == 19 && x == 18)){
             system("cls");
             printf("Voce nao sabe andar, volte pra o incio e aprenda\n");
             printf("clique qualquer botao para continuar\n");
@@ -588,7 +591,7 @@ void phaseThree(){
         }
                                     }   
 
-        /*if(mapa[9][1] == ' '){
+        if(mapa[9][1] == ' '){
             inimigoY = 21 + rand() % (39 - 21 + 1);
             inimigoX = 21 + rand() % (39 - 21 + 1);
             if(mapa[inimigoY][inimigoX] != '*'){
@@ -601,9 +604,9 @@ void phaseThree(){
             printf("clique qualquer botao para continuar\n");
             tecla = getch();  // Espera o jogador ler
 
-            phaseTwo();
+            phaseThree();
             }  
-        }*/
+        }
 
         if(TTY == y && TTX == x){
             printf("aperte i para interagir\n");
@@ -625,6 +628,29 @@ void phaseThree(){
             }
         }
 
+        if(y < 20){
+            if(rand() % 2 == 0){
+            if (monstroY < y) {
+            if (mapa[monstroY + 1][monstroX] == ' ') monstroY++;
+            } else if (monstroY > y) {
+            if (mapa[monstroY - 1][monstroX] == ' ') monstroY--;
+            }
+            }else{
+            if (monstroX < x && mapa[monstroY][monstroX + 1] == ' ') {
+            monstroX++;
+            } else if (monstroX > x && mapa[monstroY][monstroX - 1] == ' ') {
+            monstroX--;
+            }
+        }
+            if(monstroY == y && monstroX == x ){
+                printf("O monstro te comeu cara, melhore\n");
+                printf("clique qualquer botao para continuar\n");
+                tecla = getch();  // Espera o jogador ler
+
+            phaseThree();
+            }
+        }
+
         mapa[y][x] = '&';
         mapa[NPCY][NPCX] = 'P';
         mapa [CY][CX] = '@';
@@ -633,6 +659,7 @@ void phaseThree(){
         mapa[inimigoY][inimigoX] = 'X';
         mapa [TTY][TTX] = '>';
         mapa [TY][TX] = '>';
+        mapa [monstroY][monstroX] = 'V';
         system("cls");
 
 
