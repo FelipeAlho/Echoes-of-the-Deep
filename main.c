@@ -15,6 +15,8 @@ void exit();
 void phaseOne();
 void phaseTwo();
 void phaseThree();
+void easterEGG();
+void JogoOver();
 
 int choice;
 int voltar;
@@ -61,6 +63,25 @@ void iniciar()
         Sleep(3000);
         iniciar();
         break;
+    }
+}
+
+void easterEGG(){
+    system("cls");
+    title();
+}
+
+void JogoOver(){
+    system("cls");
+    title();
+    choice = 0;
+    printf("Parabens pelo fim do jogo\n");
+    printf("nos temos mais uma fase se voce desejar. du du du du....");
+    printf("(1) - Ester Egg\n");
+    printf("Qualquer outro numero para sair");
+    scanf("%d", &choice);
+    if(choice == 1){
+        easterEGG();
     }
 }
 
@@ -665,7 +686,7 @@ void phaseThree(){
 
 
     }
-    phaseThree();
+    JogoOver();
 }
 
 void tutorial()
