@@ -17,11 +17,25 @@ void phaseTwo();
 void phaseThree();
 void easterEGG();
 void JogoOver();
+void escondercursor();
+void limparTela();
 
 int choice;
 int voltar;
 int i,j;
 
+void limparTela() {
+    COORD coord = {0, 0};
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+
+void esconderCursor() {
+    CONSOLE_CURSOR_INFO cursorInfo;
+    cursorInfo.dwSize = 1;
+    cursorInfo.bVisible = FALSE;
+    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
+}
 
 void title()
 {
@@ -69,6 +83,123 @@ void iniciar()
 void easterEGG(){
     system("cls");
     title();
+    char tecla;
+    int a = 11;
+    int l = 11;
+    int y = 8;
+    int x = 1;
+    int NPCY = 5;
+    int NPCX = 9;
+    int CY = 5;
+    int CX = 5;
+    char mapa[a][l];
+
+     for (i = 0; i < a; i++){
+        for(j = 0; j < l; j++){
+            if (i == 0 || j == 0 || i == a-1 || j == l-1 || (i == 9 && j ==5) || (i == 8 && j == 5) || (i == 7 && j == 5) || (i == 6 && j == 5)){
+                mapa[i][j] = '*';
+            } else {
+                mapa[i][j] = ' ';
+            }
+        }
+    }
+
+    mapa[y][x] = '&';
+    mapa[NPCY][NPCX] = 'P';
+    mapa [CY][CX] = '@';
+
+    while (1)
+    {
+        title();
+        for (i = 0; i < a; i++){
+            for(j = 0; j < l; j++){
+                printf("%c ", mapa[i][j]);
+            }
+            printf("\n");
+        }
+
+        tecla = getch();
+
+        mapa[y][x] = ' ';
+        mapa[NPCY][NPCX] = ' ';
+        if (tecla == 'w'){  
+            if (mapa[y-1][x] != '*' && mapa[y-1][x] != 'D'){
+                y--;
+            }
+        }
+
+        if (tecla == 'a'){
+            if (mapa[y][x-1] != '*' && mapa[y][x-1] != 'D'){
+                x--;
+            }
+        }
+
+        if (tecla == 's'){
+            if (mapa[y+1][x] != '*' &&  mapa[y+1][x] !='D'){
+                y++;
+            }
+        }
+
+        if (tecla == 'd'){
+            if (mapa[y][x+1] != '*' && mapa[y][x+1] != 'D'){
+                x++;
+            }
+        }
+        
+    
+       
+
+        if(CY == y && CX == x){
+            printf("aperte i para interagir\n");
+            
+            tecla = getch();  // Espera o jogador ler
+
+            if(tecla == 'i'){
+            mapa [CY][CX] = ' ';
+            system("cls");
+            printf("A porta nao esta abrindo...\n");
+            printf("\nPressione qualquer tecla para continuar...");
+            getch();  // Espera o jogador ler
+            }
+        }        
+        if(mapa[9][9] == '='){
+            if(y == 9 && x == 9){
+                printf("aperte i para interagir\n");
+            
+                tecla = getch();  // Espera o jogador ler
+
+        
+            }
+        }
+        if (NPCY == y && NPCX == x) {
+        printf("Aperte 'i' para interagir\n");
+        
+        tecla = getch();  // Espera nova tecla
+
+        if (tecla == 'i') {
+        system("cls");
+        printf(" Artur-Cabeca-Oca:\n");
+        printf("A porta nao esta abrindo, ne?\n");
+        printf("e nao ira abrir nunca mais pra voce...ADEUS!\n");
+        printf("Artur-Cabeca-Oca MATOU voce.\n");
+        printf("Nunca mais roube chaves de Artur-Cabeca-Oca.\n");
+        printf("\nPressione qualquer tecla para continuar...");
+        getch();  // Espera o jogador ler
+        main();
+        
+        }
+                                    }   
+        
+
+        mapa[y][x] = '&';
+        mapa[NPCY][NPCX] = 'P';
+        mapa [CY][CX] = '@';
+        
+        system("cls");
+        
+        
+    }
+    
 }
 
 void JogoOver(){
@@ -78,7 +209,7 @@ void JogoOver(){
     printf("Parabens pelo fim do jogo\n");
     printf("nos temos mais uma fase se voce desejar. du du du du....");
     printf("(1) - Ester Egg\n");
-    printf("Qualquer outro numero para sair");
+    printf("Qualquer outro numero para sair\n");
     scanf("%d", &choice);
     if(choice == 1){
         easterEGG();
@@ -87,6 +218,7 @@ void JogoOver(){
 
 void phaseOne()
 {
+    esconderCursor();
     system("cls");
     char tecla;
     int a = 11;
@@ -211,6 +343,7 @@ void phaseOne()
 }
 
 void phaseTwo(){
+    esconderCursor();
      system("cls");
     char tecla;
     int a = 21;
@@ -401,6 +534,7 @@ void phaseTwo(){
 }
 
 void phaseThree(){
+    esconderCursor();
     system("cls");
     char tecla;
     int a = 41;
@@ -681,7 +815,7 @@ void phaseThree(){
         mapa [TTY][TTX] = '>';
         mapa [TY][TX] = '>';
         mapa [monstroY][monstroX] = 'V';
-        system("cls");
+        limparTela();
 
 
 
@@ -691,6 +825,7 @@ void phaseThree(){
 
 void tutorial()
 {
+    esconderCursor();
      
     system("cls");
     char tecla;
